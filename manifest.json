@@ -1,0 +1,91 @@
+{
+  "name": "Evologik AI - AI Solutions for Local Businesses",
+  "short_name": "Evologik AI",
+  "description": "Intelligent AI solutions for local businesses in Belleville, ON. Get a free consultation today.",
+  "start_url": "/?utm_source=pwa",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1F3C88",
+  "theme_color": "#1F3C88",
+  "id": "/",
+  "scope": "/",
+  "categories": ["business", "productivity", "technology", "ai"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "iarc_rating_id": "",
+  "icons": [
+    {
+      "src": "/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192-maskable.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512x512-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Evologik AI Home Page"
+    },
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Evologik AI on Mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "url": "/contact?utm_source=pwa",
+      "description": "Reach out to Evologik AI",
+      "icons": [
+        {
+          "src": "/shortcuts/contact.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "url": "/services?utm_source=pwa",
+      "description": "Explore our AI services",
+      "icons": [
+        {
+          "src": "/shortcuts/services.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "related_applications": []
+}

@@ -1,0 +1,35 @@
+# Robots.txt for Evologik AI Website
+# Updated: April 28, 2025
+
+# Instructions for all web crawlers
+User-agent: *
+Allow: /
+Allow: /services
+Allow: /about
+Allow: /pricing
+Allow: /contact
+Allow: /blog
+Allow: /sitemap.xml
+
+# Disallow API endpoints and non-public areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /*.json$
+# Specific instructions for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Specific instructions for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block archive.org from saving non-public pages
+User-agent: ia_archiver
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://evologik.ai/sitemap.xml
