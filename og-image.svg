@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#1F3C88" />
+  <rect x="100" y="100" width="1000" height="430" rx="15" fill="#111827" fill-opacity="0.7" />
+  
+  <!-- Logo -->
+  <rect x="150" y="150" width="80" height="80" rx="8" fill="#35A7FF" />
+  <rect x="150" y="250" width="40" height="40" rx="4" fill="#35A7FF" />
+  <rect x="190" y="250" width="40" height="40" rx="4" fill="#35A7FF" />
+  
+  <!-- Text -->
+  <text x="300" y="200" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white">EVOLOGIK AI</text>
+  <text x="300" y="280" font-family="Arial, sans-serif" font-size="40" fill="#F9FAFB">Intelligent Solutions for Local Business</text>
+  
+  <!-- Features -->
+  <circle cx="330" cy="350" r="10" fill="#35A7FF" />
+  <text x="360" y="360" font-family="Arial, sans-serif" font-size="30" fill="white">AI-Powered Analytics</text>
+  
+  <circle cx="330" cy="410" r="10" fill="#35A7FF" />
+  <text x="360" y="420" font-family="Arial, sans-serif" font-size="30" fill="white">Custom Business Solutions</text>
+  
+  <circle cx="330" cy="470" r="10" fill="#35A7FF" />
+  <text x="360" y="480" font-family="Arial, sans-serif" font-size="30" fill="white">Local Support in Belleville, ON</text>
+</svg>
