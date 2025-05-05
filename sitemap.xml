@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://evologikai.com/</loc>
+    <loc>https://www.evologikai.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://evologikai.com/services/</loc>
+    <loc>https://www.evologikai.com/services/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evologikai.com/about/</loc>
+    <loc>https://www.evologikai.com/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://evologikai.com/pricing/</loc>
+    <loc>https://www.evologikai.com/pricing/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://evologikai.com/contact/</loc>
+    <loc>https://www.evologikai.com/contact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://evologikai.com/blog/</loc>
+    <loc>https://www.evologikai.com/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
