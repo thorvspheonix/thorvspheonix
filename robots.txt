@@ -1,3 +1,111 @@
+# START ROBOTS.TXT FOR WWW.EVOLOGIKAI.COM
+# Last Updated: [Insert Current Date]
+# Purpose: To guide search engine crawlers on which parts of www.evologikai.com to crawl or ignore.
+# ----------------------------------------
+
+# --- Default rules for all crawlers ---
 User-agent: *
-Allow: /
+
+# Disallow common paths that generally do not provide value in search results
+# or are for administrative/internal purposes.
+# Review and remove any if they ARE actual public content paths on your site.
+Disallow: /admin/
+Disallow: /login
+Disallow: /signin
+Disallow: /register
+Disallow: /signup
+Disallow: /profile/
+Disallow: /account/
+Disallow: /settings/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /orders/
+Disallow: /password-reset/
+Disallow: /temp/
+Disallow: /logs/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/          # Common CMS admin path, include as a precaution
+Disallow: /xmlrpc.php         # Common CMS file, include as a precaution
+
+# Disallow internal site search results pages.
+# These create low-quality, duplicate content for search engines.
+# COMMON PATTERNS:
+Disallow: /*?s=               # Common search query parameter (e.g., from your blog search)
+Disallow: /*&s=               # If 's' is not the first parameter
+Disallow: /*?q=               # Another common search query parameter
+Disallow: /*&q=               # If 'q' is not the first parameter
+# If your blog search is specifically like /blog?s=query, you could use:
+# Disallow: /blog?s=
+# Disallow: /blog/?s=
+
+# Disallow URLs with common tracking parameters if they create duplicate content.
+# Canonical tags are the primary solution, but this helps with crawl budget.
+Disallow: /*?utm_source=
+Disallow: /*&utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*&utm_medium=
+Disallow: /*?utm_campaign=
+Disallow: /*&utm_campaign=
+Disallow: /*?utm_term=
+Disallow: /*&utm_term=
+Disallow: /*?utm_content=
+Disallow: /*&utm_content=
+Disallow: /*?sessionid=
+Disallow: /*&sessionid=
+# Add any other specific tracking parameters you use
+
+# Vercel / Next.js Specific Considerations (Assuming this platform):
+# Disallow Next.js data files used for client-side navigation (not useful for direct indexing).
+Disallow: /_next/data/
+
+# API Routes (Assuming internal use only for any /api/ paths):
+# If you have any serverless functions/API routes under /api/ that are not for public indexing.
+Disallow: /api/
+# If some API routes ARE public and indexable, you'd need more specific Allow rules
+# (e.g., Allow: /api/public-data-endpoint) AFTER a more general /api/ disallow,
+# or only disallow specific non-public API paths.
+
+# IMPORTANT: The following pages are ALLOWED by default because they are not disallowed:
+# / (Homepage)
+# /services/ (and its subpages like /services/business-analytics-ai/)
+# /about/
+# /pricing/
+# /contact/
+# /blog/ (Blog listing page, individual posts, category pages, pagination)
+# /privacy-policy/
+# /terms-of-service/
+# /cookie-policy/
+# And any other page not matching a Disallow rule.
+
+# --- Rules for AI/LLM Crawlers (Optional, but increasingly common to add) ---
+# Many sites are choosing to disallow AI training bots.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended # For Google's Vertex AI / Bard extensions
+Disallow: /
+
+User-agent: CCBot # Common Crawl
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web # Potential future user agent for Anthropic's Claude
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# User-agent: PerplexityBot # Perplexity AI
+# Disallow: /
+
+# --- Sitemap Declaration ---
+# Crucial for helping search engines discover all your important pages.
+# Ensure this sitemap is valid, accessible, and kept up-to-date.
 Sitemap: https://www.evologikai.com/sitemap.xml
+
+# END ROBOTS.TXT
