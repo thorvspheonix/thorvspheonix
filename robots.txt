@@ -1,5 +1,5 @@
 # START ROBOTS.TXT FOR WWW.EVOLOGIKAI.COM
-# Last Updated: [Insert Current Date]
+# Last Updated: [2025-05-07]
 # Purpose: To guide search engine crawlers on which parts of www.evologikai.com to crawl or ignore.
 # ----------------------------------------
 
