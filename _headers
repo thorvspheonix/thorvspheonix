@@ -1,9 +1,67 @@
 /*
+  # HTTP STRICT TRANSPORT SECURITY (HSTS)
+  # Tells browsers to only access your site via HTTPS.
+  # max-age is in seconds (63072000 = 2 years).
+  # includeSubDomains applies HSTS to all subdomains.
+  # preload allows submission to HSTS preload lists (ensure you are fully committed to HTTPS everywhere).
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # X-CONTENT-TYPE-OPTIONS
+  # Prevents browsers from MIME-sniffing the content type.
   X-Content-Type-Options: nosniff
+
+  # X-FRAME-OPTIONS
+  # Protects against clickjacking attacks. DENY is strongest. Use SAMEORIGIN if you need to frame your own content.
   X-Frame-Options: DENY
+
+  # CONTENT SECURITY POLICY (CSP)
+  # CRITICAL: The 'unsafe-inline' for script-src and style-src significantly weakens CSP's protection against XSS.
+  # The primary goal for a strong CSP is to remove 'unsafe-inline' by:
+  #  1. Moving all inline JavaScript (<script>...</script> and on<event> handlers) to external .js files.
+  #  2. Moving all inline CSS (<style>...</style> and style="..." attributes) to external .css files.
+  #  3. If absolutely necessary, use hashes ('sha256-...') or nonces ('nonce-...') for specific inline scripts/styles.
+  #
+  # YOUR CURRENT CSP:
   Content-Security-Policy: default-src 'self'; frame-ancestors 'none'; base-uri 'self'; img-src 'self' data:; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests; block-all-mixed-content
+  #
+  # --- EXAMPLE OF A STRONGER CSP (AIM FOR THIS by modifying your site's code): ---
+  # This is a TARGET. You'll need to identify all legitimate external resource origins
+  # (CDNs, analytics, fonts, APIs) and add them to the appropriate directives.
+  #
+  # Content-Security-Policy: default-src 'self'; \
+  #   script-src 'self' https://cdn.your-scripts.com https://analytics.example.com; \
+  #   style-src 'self' https://fonts.googleapis.com https://cdn.your-styles.com; \
+  #   img-src 'self' data: https://images.your-cdn.com; \
+  #   font-src 'self' https://fonts.gstatic.com; \
+  #   connect-src 'self' https://api.your-service.com; \
+  #   frame-ancestors 'none'; \
+  #   object-src 'none'; \
+  #   base-uri 'self'; \
+  #   form-action 'self'; \
+  #   upgrade-insecure-requests; \
+  #   block-all-mixed-content
+  # --- END OF STRONGER CSP EXAMPLE ---
+
+  # REFERRER-POLICY
+  # Controls how much referrer information is sent with requests.
   Referrer-Policy: strict-origin-when-cross-origin
+
+  # PERMISSIONS-POLICY (formerly Feature-Policy)
+  # Controls which browser features can be used by the site. Disable unused ones.
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+
+  # X-XSS-PROTECTION
+  # For older browsers that don't fully support CSP. Modern browsers often ignore it or have removed support.
+  # Its protection is limited and CSP is the preferred mechanism.
   X-XSS-Protection: 1; mode=block
+
+  # CROSS-ORIGIN RESOURCE SHARING (CORS)
+  # This allows 'https://www.evologikai.com' to make AJAX requests TO THIS SITE (the one serving these headers).
+  # - If THIS SITE IS 'www.evologikai.com', this header is largely redundant for same-origin requests
+  #   and might only be needed if scripts on www.evologikai.com are making explicit cross-origin style
+  #   requests to themselves (uncommon for basic setups).
+  # - If THIS SITE IS AN API or different domain (e.g., api.evologikai.com) that 'www.evologikai.com' needs to
+  #   access resources from, then this header is correctly allowing that specific origin.
+  # Consider adding "Vary: Origin" if this is indeed a cross-origin setup and the allowed origin might change.
   Access-Control-Allow-Origin: https://www.evologikai.com
+  # Vary: Origin # Uncomment if ACAO is used for true cross-origin scenarios and might vary
