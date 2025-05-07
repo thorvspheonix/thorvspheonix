@@ -1,5 +1,54 @@
+# ==============================================================================
+# COMPREHENSIVE .HTACCESS FOR ENHANCED SECURITY & PERFORMANCE
+#
+# IMPORTANT:
+# 1. BACKUP your current .htaccess file before making changes.
+# 2. TEST THOROUGHLY after applying these rules.
+# 3. Some rules may need customization for your specific site.
+# ==============================================================================
 
-# Force HTTPS safely (includes proxy-aware header check)
+# ------------------------------------------------------------------------------
+# BASIC SERVER CONFIGURATION
+# ------------------------------------------------------------------------------
+
+# PREVENT DIRECTORY LISTING
+# Prevents visitors from seeing a list of files if an index file (index.html, etc.) is missing.
+Options -Indexes
+
+# HIDE SERVER SIGNATURE
+# Prevents Apache from displaying its version and OS details on error pages.
+# This is often better set in the main Apache config (httpd.conf), but can be tried here.
+ServerSignature Off
+
+# ------------------------------------------------------------------------------
+# PROTECT SENSITIVE FILES
+# ------------------------------------------------------------------------------
+
+# DENY ACCESS TO .HTACCESS AND .HTPASSWD FILES
+<FilesMatch "^\.ht">
+  Require all denied
+</FilesMatch>
+
+# DENY ACCESS TO OTHER SENSITIVE FILES AND EXTENSIONS
+# Add or remove as needed (e.g., log files, config files, etc.)
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp|php_cs|php_errorlog|composer\.(json|lock))|~)$">
+  Require all denied
+</FilesMatch>
+
+# DENY ACCESS TO COMMON INFO/CONFIG FILES (adjust if you actually need web access to these)
+<FilesMatch "(README\.txt|readme\.txt|readme\.html|license\.txt|wp-config-sample\.php)">
+  Require all denied
+</FilesMatch>
+
+# If WordPress, helps mitigate XML-RPC attacks (brute force, DDoS amplification)
+# <Files xmlrpc.php>
+#   Require all denied
+# </Files>
+
+# ------------------------------------------------------------------------------
+# FORCE HTTPS (SSL/TLS)
+# ------------------------------------------------------------------------------
+# Your robust HTTPS redirection rule (good for proxies/load balancers)
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTPS} off [OR]
@@ -7,13 +56,123 @@
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
+# ------------------------------------------------------------------------------
+# SECURITY HEADERS
+# ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
+  # HTTP STRICT TRANSPORT SECURITY (HSTS)
+  # Tells browsers to only access your site via HTTPS.
+  # max-age is in seconds (63072000 = 2 years).
+  # includeSubDomains applies HSTS to all subdomains.
+  # preload allows submission to HSTS preload lists (ensure you are fully committed to HTTPS everywhere).
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+  # X-CONTENT-TYPE-OPTIONS
+  # Prevents browsers from MIME-sniffing the content type.
   Header set X-Content-Type-Options "nosniff"
+
+  # X-FRAME-OPTIONS
+  # Protects against clickjacking attacks. DENY is strongest. Use SAMEORIGIN if you need to frame your own content.
   Header set X-Frame-Options "DENY"
+
+  # CONTENT SECURITY POLICY (CSP)
+  # IMPORTANT: The 'unsafe-inline' for script-src and style-src significantly weakens CSP.
+  # The goal is to remove 'unsafe-inline' by moving all inline JS/CSS to external files and
+  # potentially using hashes or nonces for any exceptions.
+  #
+  # YOUR CURRENT CSP (as provided):
   Header set Content-Security-Policy "default-src 'self'; frame-ancestors 'none'; base-uri 'self'; img-src 'self' data:; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests; block-all-mixed-content"
+  #
+  # --- EXAMPLE OF A STRONGER CSP (you'll need to customize sources): ---
+  # This is a TARGET to work towards. You will need to identify all external resources
+  # (CDNs, analytics, fonts, APIs) and add their origins to the appropriate directives.
+  # Header set Content-Security-Policy "default-src 'self'; \
+  #   script-src 'self' https://cdn.example.com https://analytics.google.com; \
+  #   style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; \
+  #   img-src 'self' data: https://images.example.com; \
+  #   font-src 'self' https://fonts.gstatic.com; \
+  #   connect-src 'self' https://api.example.com; \
+  #   frame-ancestors 'none'; \
+  #   object-src 'none'; \
+  #   base-uri 'self'; \
+  #   form-action 'self'; \
+  #   upgrade-insecure-requests; \
+  #   block-all-mixed-content"
+  # --- END OF STRONGER CSP EXAMPLE ---
+
+  # REFERRER-POLICY
+  # Controls how much referrer information is sent with requests.
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # PERMISSIONS-POLICY (formerly Feature-Policy)
+  # Controls which browser features can be used by the site. Disable unused ones.
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+  # X-XSS-PROTECTION
+  # For older browsers that don't fully support CSP. Modern browsers often ignore it.
   Header set X-XSS-Protection "1; mode=block"
+
+  # CROSS-ORIGIN RESOURCE SHARING (CORS) - Your setting
+  # This allows 'https://www.evologikai.com' to make AJAX requests to THIS server.
+  # If this .htaccess IS ON the 'www.evologikai.com' server, this header might be
+  # redundant for same-origin requests but generally doesn't hurt.
+  # If this server is an API for 'www.evologikai.com' (different origin), then it's necessary.
   Header always set Access-Control-Allow-Origin "https://www.evologikai.com"
+  # If Access-Control-Allow-Origin can vary or if credentials are sent, also add:
+  # Header always append Vary "Origin"
+  # Header always set Access-Control-Allow-Credentials "true" # Only if needed and understood
 </IfModule>
+
+# ------------------------------------------------------------------------------
+# OPTIONAL: PREVENT IMAGE HOTLINKING
+# ------------------------------------------------------------------------------
+# Replace YOURDOMAIN.com with your actual domain.
+# Add other allowed domains (e.g., search engines) as needed.
+# Uncomment the section below if you want to enable this.
+#
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTP_REFERER} !^$
+#   RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?YOURDOMAIN\.com [NC]
+#   RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google\.com [NC]
+#   RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing\.com [NC]
+#   # You can forbid access (F flag) or show a replacement image.
+#   RewriteRule \.(jpg|jpeg|png|gif|bmp|svg)$ - [F,NC]
+#   # Example for replacement image:
+#   # RewriteRule \.(jpg|jpeg|png|gif|bmp|svg)$ /path/to/your/hotlink-warning-image.jpg [L,NC]
+# </IfModule>
+
+# ------------------------------------------------------------------------------
+# OPTIONAL: CUSTOM ERROR DOCUMENTS
+# ------------------------------------------------------------------------------
+# Create these HTML files in your website's root directory or specify full paths.
+# Improves user experience and can hide default server error messages.
+#
+# ErrorDocument 400 /400.html
+# ErrorDocument 401 /401.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# ------------------------------------------------------------------------------
+# OPTIONAL: BASIC EXPLOIT PROTECTION
+# ------------------------------------------------------------------------------
+# These rules attempt to block common malicious patterns in query strings.
+# Test carefully as they might cause false positives for legitimate requests.
+# A dedicated Web Application Firewall (WAF) is a more robust solution.
+#
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   # Block requests with common malicious terms in query string
+#   RewriteCond %{QUERY_STRING} (environ|localhost|loopback|127\.0\.0\.1) [NC,OR]
+#   RewriteCond %{QUERY_STRING} (mosConfig_[a-zA-Z_]{1,21}(=|\%3D)) [NC,OR]
+#   RewriteCond %{QUERY_STRING} (base64_encode|base64_decode|eval\(|gzinflate\(|passthru\(|shell_exec\(|exec\(|proc_open\(|system\(|phpinfo\() [NC,OR]
+#   RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+#   RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+#   RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+#   RewriteRule .* - [F,L]
+# </IfModule>
+
+# ==============================================================================
+# END OF .HTACCESS
+# ==============================================================================
