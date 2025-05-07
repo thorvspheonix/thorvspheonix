@@ -37,5 +37,11 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!api/|_next/|static/|public/|images/|assets/|favicon.ico|robots.txt|sitemap.xml|manifest.json|service-worker.js|.*\\..*).*)",
+      "destination": "/index.html"
+    }
   ]
 }
