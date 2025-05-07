@@ -1,112 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!-- Added SEO meta by ChatGPT on 2025-04-29 -->
-<title>EvologikAI – AI Solutions That Grow Local Businesses</title>
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="description" content="EvologikAI designs affordable, bespoke AI automations that help local companies cut costs, win customers and scale—without hiring a dev team.">
-<link rel="canonical" href="https://www.evologikai.com/">
-<meta property="og:title" content="EvologikAI – AI That Works for Local Business">
-<meta property="og:description" content="Affordable automations, smarter decisions, faster growth.">
-<meta property="og:image" content="https://www.evologikai.com/og-image.jpg">
-<meta property="og:url" content="https://www.evologikai.com/">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "EvologikAI",
-  "url": "https://www.evologikai.com",
-  "logo": "https://www.evologikai.com/logo.svg",
-  "sameAs": ["https://www.linkedin.com/company/evologikai"]
-}</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "EvologikAI",
-  "image": "https://www.evologikai.com/logo.svg",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 44.1628,
-    "longitude": -77.3832
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "09:00",
-      "closes": "17:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.linkedin.com/company/evologikai"
-  ],
-  "service": [
-    {
-      "@type": "Service",
-      "serviceType": "Custom AI Automation",
-      "description": "Custom AI automation solutions for small local businesses.",
-      "provider": {
-        "@type": "Organization",
-        "name": "EvologikAI"
-      }
-    },
-    {
-      "@type": "Service",
-      "serviceType": "Predictive Analytics",
-      "description": "Data-driven predictive analytics tailored for local market trends.",
-      "provider": {
-        "@type": "Organization",
-        "name": "EvologikAI"
-      }
-    }
-  ],
-  "areaServed": {
-    "@type": "Place"
-  }
-}
-</script>
-
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preload" href="/style.css" as="style">
-<link rel="preload" href="/main.js" as="script">
-<link rel="preconnect" href="https://www.evologikai.com">
 
+    <!-- SEO & Meta Defaults (Dynamically Updated by React Helmet Async for other routes) -->
+    <title>EvologikAI – AI Solutions That Grow Local Businesses</title>
+    <meta name="description" content="EvologikAI designs affordable, bespoke AI automations that help local companies cut costs, win customers and scale—without hiring a dev team.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://www.evologikai.com/"> <!-- Default for homepage. Dynamically updated. -->
+    <meta name="author" content="Evologik AI">
     <meta name="theme-color" content="#1F3C88" />
-    <link rel="icon" href="/icon-192x192.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/icon-192x192.svg" />
+
+    <!-- Open Graph / Facebook (Defaults - Dynamically Updated) -->
+    <meta property="og:title" content="EvologikAI – AI That Works for Local Business">
+    <meta property="og:description" content="Affordable automations, smarter decisions, faster growth.">
+    <meta property="og:image" content="https://www.evologikai.com/og-image.jpg"> <!-- Verify /og-image.jpg exists and is optimized (e.g., 1200x630px). Dynamically updated. -->
+    <meta property="og:url" content="https://www.evologikai.com/"> <!-- Default for homepage. Dynamically updated. -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Evologik AI">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card (Defaults - Dynamically Updated) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.evologikai.com/"> <!-- Default for homepage. Dynamically updated. -->
+    <meta name="twitter:title" content="EvologikAI – AI That Works for Local Business">
+    <meta name="twitter:description" content="Affordable automations, smarter decisions, faster growth.">
+    <meta name="twitter:image" content="https://www.evologikai.com/og-image.jpg"> <!-- Matches og:image. Dynamically updated. -->
+
+    <!-- Structured Data (LD+JSON) - Baseline for the Business -->
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EvologikAI",
+      "url": "https://www.evologikai.com",
+      "logo": "https://www.evologikai.com/logo.svg", // Verify /logo.svg exists
+      "sameAs": ["https://www.linkedin.com/company/evologikai"] // Add other relevant profiles (Twitter, Facebook etc.)
+    }</script>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "EvologikAI",
+      "image": "https://www.evologikai.com/logo.svg",
+      "url": "https://www.evologikai.com", // Added URL
+      "telephone": "+1-613-555-1234", // Added example phone
+      "description": "AI solutions for local businesses in Belleville, ON", // Added description
+      "address": { // Added example address
+        "@type": "Postal Code",
+        "streetAddress": "22 Gordon Street",
+        "addressLocality": "Belleville",
+        "addressRegion": "ON",
+        "postalCode": "K8P 3E3", // Example postal code
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.1628,
+        "longitude": -77.3832
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [ // Repeat relevant profiles
+        "https://www.linkedin.com/company/evologikai"
+      ],
+      "priceRange": "$$", // Example price range
+      "service": [ // Keep relevant services
+        {
+          "@type": "Service",
+          "serviceType": "Custom AI Automation",
+          "description": "Custom AI automation solutions for small local businesses.",
+          "provider": { "@type": "Organization", "name": "EvologikAI" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Predictive Analytics",
+          "description": "Data-driven predictive analytics tailored for local market trends.",
+          "provider": { "@type": "Organization", "name": "EvologikAI" }
+        }
+        // Add other primary services here
+      ],
+      "areaServed": {
+        "@type": "Place",
+        "name": "Belleville, Ontario" // Made areaServed more specific
+        // Optionally add broader regions if applicable: , "geo": { "@type": "GeoCircle", "geoMidpoint": {...}, "geoRadius": "..." }
+      }
+    }
+    </script>
+    <!-- NOTE: Add more specific schema (Service, Article, etc.) dynamically or via pre-rendering for relevant pages -->
+
+    <!-- Performance Hints -->
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="preload" href="/main.js" as="script">
+    <!-- Removed self-preconnect link. Add preconnects only for critical third-party origins (fonts, APIs etc.) if needed -->
+    <!-- Example: <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+
+    <!-- PWA & Icons -->
+    <!-- Verify icon paths and manifest.json -->
+    <link rel="icon" href="/icon-192x192.svg" type="image/svg+xml" sizes="192x192" />
+    <link rel="icon" href="/icon-512x512.png" type="image/png" sizes="512x512" /> <!-- Added larger PNG fallback -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> <!-- Convention often uses a different filename/size -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <script type="module" crossorigin src="/main.js"></script>
+
+    <!-- Stylesheet & Main Script -->
     <link rel="stylesheet" crossorigin href="/style.css">
-  
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"></head>
-  <body>
-<noscript>
-  <div style="padding:1.5rem;font-family:system-ui;">
-    <h1>Intelligent AI Solutions for Local Businesses</h1>
+    <!-- NOTE: The main performance improvement comes from code-splitting this main.js in your build process -->
+    <script type="module" crossorigin src="/main.js"></script>
 
-    <h2>Our Services</h2>
-    <p>We offer custom AI automation, predictive analytics, and workflow optimization tailored to local businesses.</p>
-    <h2>Why Choose EvologikAI</h2>
-    <p>Our local expertise, affordable solutions, and proven success help you grow efficiently.</p>
-    <h2>Contact Us</h2>
-    <p>Email: info@evologikai.com</p>
-    
-    <p>EvologikAI builds custom AI tools that automate workflows, boost revenue, and cut costs for local companies.</p>
-  </div>
-</noscript>
+    <!-- Sitemap Reference (Optional in head, ensure it's in robots.txt) -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+</head>
+<body>
+    <!-- Noscript fallback for basic accessibility and non-JS crawlers -->
+    <noscript>
+      <div style="padding: 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6;">
+        <h1>EvologikAI: Intelligent AI Solutions for Local Businesses</h1>
+        <p>Our website requires JavaScript to function fully. Here's a brief overview:</p>
+        <h2>Our Services</h2>
+        <p>We offer custom AI automation, predictive analytics, and workflow optimization tailored to help local businesses in Belleville and surrounding areas cut costs, improve efficiency, and drive growth.</p>
+        <h2>Why Choose EvologikAI?</h2>
+        <p>We combine deep AI expertise with a local focus, providing affordable, effective solutions and dedicated support.</p>
+        <h2>Contact Us</h2>
+        <p>Ready to discuss how AI can benefit your business? Reach out for a free consultation.</p>
+        <p>Email: info [at] evologikai [dot] com | Phone: (613) 555-1234</p>
+        <p>EvologikAI builds custom AI tools that automate workflows, boost revenue, and cut costs for local companies.</p>
+      </div>
+    </noscript>
 
+    <!-- React App Mount Point -->
     <div id="root"></div>
-    
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-  </body>
+</body>
 </html>
